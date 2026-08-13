@@ -253,6 +253,7 @@ nav a.active::after {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 28px;
+    cursor: pointer;
 }
 
 .product-card {
