@@ -51,9 +51,19 @@
         <section class="section">
             <div class="container">
 
+                <div class="filter-menu">
+                    <button class="filter-btn active" data-filter="all">All Products</button>
+                    <button class="filter-btn" data-filter="running">Running</button>
+                    <button class="filter-btn" data-filter="sport">Sport</button>
+                    <button class="filter-btn" data-filter="casual">Casual</button>
+                    <button class="filter-btn" data-filter="outdoor">Outdoor</button>
+                    <button class="filter-btn" data-filter="lifestyle">Lifestyle</button>
+                    <button class="filter-btn" data-filter="premium">Premium</button>
+                </div>
+
                 <div class="products-grid">
 
-                    <div class="product-card">
+                    <div class="product-card" data-category="running">
                         <div class="product-image"><img src="../images/shoes1.png" alt=""></div>
                         <div class="product-info">
                             <p class="category">RUNNING</p>
@@ -66,7 +76,7 @@
                         </div>
                     </div>
 
-                    <div class="product-card">
+                    <div class="product-card" data-category="sport">
                         <div class="product-image"><img src="../images/shoes1.png" alt="Elite Motion"></div>
                         <div class="product-info">
                             <p class="category">SPORT</p>
@@ -79,7 +89,7 @@
                         </div>
                     </div>
 
-                    <div class="product-card">
+                    <div class="product-card" data-category="casual">
                         <div class="product-image"><img src="../images/shoes1.png" alt="Classic Navy"></div>
                         <div class="product-info">
                             <p class="category">CASUAL</p>
@@ -92,7 +102,7 @@
                         </div>
                     </div>
 
-                    <div class="product-card">
+                    <div class="product-card" data-category="outdoor">
                         <div class="product-image"><img src="../images/shoes1.png" alt="Deep Blue Trek"></div>
                         <div class="product-info">
                             <p class="category">OUTDOOR</p>
@@ -105,7 +115,7 @@
                         </div>
                     </div>
 
-                    <div class="product-card">
+                    <div class="product-card" data-category="lifestyle">
                         <div class="product-image"><img src="../images/shoes1.png" alt="Urban Step"></div>
                         <div class="product-info">
                             <p class="category">LIFESTYLE</p>
@@ -118,7 +128,7 @@
                         </div>
                     </div>
 
-                    <div class="product-card">
+                    <div class="product-card" data-category="premium">
                         <div class="product-image"><img src="../images/shoes1.png" alt="Royal Blue Pro"></div>
                         <div class="product-info">
                             <p class="category">PREMIUM</p>
@@ -157,6 +167,39 @@
             © 2026 BLUESTEP. All Rights Reserved.
         </div>
     </footer>
+
+    <script>
+        // Product filter functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const productCards = document.querySelectorAll('.product-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                productCards.forEach(card => {
+                    if (filterValue === 'all') {
+                        card.style.display = 'block';
+                        setTimeout(() => card.style.opacity = '1', 10);
+                    } else {
+                        const cardCategory = card.getAttribute('data-category');
+                        if (cardCategory === filterValue) {
+                            card.style.display = 'block';
+                            setTimeout(() => card.style.opacity = '1', 10);
+                        } else {
+                            card.style.opacity = '0';
+                            setTimeout(() => card.style.display = 'none', 300);
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 
 </body>
 

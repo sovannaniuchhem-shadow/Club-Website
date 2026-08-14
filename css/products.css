@@ -248,6 +248,42 @@ nav a.active::after {
 .section {
     padding: 100px 0;
 }
+
+/* //////// FILTER MENU //////// */
+.filter-menu {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 12px 24px;
+    border: 2px solid var(--blue3);
+    background: transparent;
+    color: var(--text);
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.filter-btn:hover {
+    border-color: var(--light-blue);
+    color: var(--light-blue);
+    transform: translateY(-2px);
+}
+
+.filter-btn.active {
+    background: var(--blue3);
+    border-color: var(--light-blue);
+    color: var(--text);
+    box-shadow: 0 10px 25px rgba(127, 169, 223, 0.2);
+}
+
 /* //////// */
 .products-grid {
     display: grid;
@@ -263,6 +299,7 @@ nav a.active::after {
     overflow: hidden;
     transition: 0.35s ease;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    opacity: 1;
 }
 
 .product-card:hover {
@@ -314,6 +351,7 @@ nav a.active::after {
     font-size: 23px;
     margin: 6px 0;
 }
+
 /* ////// */
 .description {
     color: var(--soft);
@@ -407,6 +445,16 @@ nav a.active::after {
     nav {
         font-size: 13px;
         gap: 14px;
+    }
+
+    .filter-menu {
+        gap: 10px;
+        margin-bottom: 30px;
+    }
+
+    .filter-btn {
+        padding: 10px 16px;
+        font-size: 12px;
     }
 
     .products-grid {
