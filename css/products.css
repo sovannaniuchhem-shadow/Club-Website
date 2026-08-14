@@ -287,8 +287,8 @@ nav a.active::after {
 /* //////// */
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
     cursor: pointer;
 }
 
@@ -309,14 +309,14 @@ nav a.active::after {
 }
 
 .product-image {
-    height: 280px;
+    height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
     background:
         radial-gradient(circle, var(--blue2), transparent 65%),
         var(--dark);
-    font-size: 110px;
+    font-size: 80px;
     transition: 0.35s;
     overflow: hidden;
 }
@@ -337,7 +337,7 @@ nav a.active::after {
 }
 
 .product-info {
-    padding: 28px;
+    padding: 18px;
 }
 
 .category {
@@ -348,15 +348,15 @@ nav a.active::after {
 }
 
 .product-info h3 {
-    font-size: 23px;
-    margin: 6px 0;
+    font-size: 16px;
+    margin: 4px 0;
 }
 
 /* ////// */
 .description {
     color: var(--soft);
-    font-size: 14px;
-    margin-bottom: 22px;
+    font-size: 12px;
+    margin-bottom: 14px;
 }
 
 .product-bottom {
@@ -366,18 +366,19 @@ nav a.active::after {
 }
 
 .product-bottom strong {
-    font-size: 21px;
+    font-size: 16px;
 }
 
 .product-bottom button {
     border: 1px solid var(--blue3);
     background: var(--blue3);
     color: var(--text);
-    padding: 10px 17px;
-    border-radius: 7px;
+    padding: 8px 12px;
+    border-radius: 6px;
     font-weight: bold;
     cursor: pointer;
     transition: 0.3s;
+    font-size: 12px;
 }
 
 .product-bottom button:hover {
@@ -432,7 +433,7 @@ nav a.active::after {
     }
 
     .products-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
