@@ -1,3 +1,5 @@
+@import 'keyframes.css';
+
 * {
     margin: 0;
     padding: 0;
@@ -13,30 +15,6 @@
     --light-blue: #7fa9df;
     --text: #dce9f8;
     --soft: #b8d1ef;
-}
-
-@keyframes snowfall {
-    0% {
-        transform: translateY(-10vh) translateX(0);
-        opacity: 1;
-    }
-
-    100% {
-        transform: translateY(100vh) translateX(100px);
-        opacity: 0;
-    }
-}
-
-@keyframes snowfall-2 {
-    0% {
-        transform: translateY(-10vh) translateX(0);
-        opacity: 1;
-    }
-
-    100% {
-        transform: translateY(100vh) translateX(-80px);
-        opacity: 0;
-    }
 }
 
 .snow-container {
@@ -466,7 +444,6 @@ a {
     letter-spacing: 0.5px;
 }
 
-/* ////// */
 .description {
     color: var(--soft);
     font-size: 12px;

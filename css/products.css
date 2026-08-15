@@ -1,3 +1,5 @@
+@import 'keyframes.css';
+
 * {
     margin: 0;
     padding: 0;
@@ -327,7 +329,6 @@ a {
     transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* //////// */
 .products-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -400,7 +401,6 @@ a {
     letter-spacing: 0.5px;
 }
 
-/* ////// */
 .description {
     color: var(--soft);
     font-size: 12px;
@@ -474,7 +474,6 @@ a {
     color: var(--soft);
 }
 
-/* //////// PRODUCT MODAL //////// */
 .product-modal {
     position: fixed;
     top: 0;
@@ -516,17 +515,6 @@ a {
     overflow-y: auto;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
     animation: modalSlideIn 0.3s ease;
-}
-
-@keyframes modalSlideIn {
-    from {
-        transform: translateY(-50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
 }
 
 .modal-close {
@@ -685,7 +673,6 @@ a {
     box-shadow: 0 12px 30px rgba(127, 169, 223, 0.4);
 }
 
-/* Scrollbar styling for modal */
 .modal-content::-webkit-scrollbar {
     width: 8px;
 }
