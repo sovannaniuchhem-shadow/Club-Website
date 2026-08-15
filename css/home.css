@@ -163,36 +163,42 @@ a {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 40px;
 }
 
 .logo {
-    font-size: 25px;
+    font-size: 24px;
     font-weight: 900;
     letter-spacing: 2px;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .logo span {
     color: var(--light-blue);
 }
 
-nav {
+.nav-menu {
     display: flex;
-    gap: 32px;
+    gap: 40px;
+    flex: 1;
 }
 
-nav a {
+.nav-menu a {
     color: var(--soft);
-    font-weight: bold;
+    font-weight: 600;
     position: relative;
     transition: color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    font-size: 14px;
+    letter-spacing: 0.5px;
 }
 
-nav a:hover,
-nav a.active {
+.nav-menu a:hover,
+.nav-menu a.active {
     color: var(--text);
 }
 
-nav a::after {
+.nav-menu a::after {
     content: "";
     position: absolute;
     left: 0;
@@ -203,23 +209,55 @@ nav a::after {
     transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-nav a:hover::after,
-nav a.active::after {
+.nav-menu a:hover::after,
+.nav-menu a.active::after {
     width: 100%;
 }
 
-.nav-btn {
-    padding: 11px 21px;
-    border: 1px solid var(--blue3);
-    border-radius: 8px;
-    font-weight: bold;
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+.nav-icons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-shrink: 0;
 }
 
-.nav-btn:hover {
+.icon-btn {
+    background: transparent;
+    border: 1px solid var(--blue);
+    color: var(--soft);
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+}
+
+.icon-btn:hover {
     background: var(--blue2);
+    border-color: var(--light-blue);
+    color: var(--light-blue);
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(127, 169, 223, 0.2);
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: var(--light-blue);
+    color: var(--dark);
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
 }
 
 .btn,
