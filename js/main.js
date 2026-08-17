@@ -1,6 +1,7 @@
 // Main Application Script
 import { initializeModal } from './modal.js';
 import { initializeFilter } from './filter.js';
+import { initializeAccount } from './account.js';
 
 function createCartSystem() {
     const cartButton = document.querySelector('.cart-btn');
@@ -238,6 +239,9 @@ function createCartSystem() {
 // Initialize all page functionality when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     createCartSystem();
+
+    // Initialize account functionality
+    initializeAccount();
 
     // Initialize modal functionality if on a page with products
     initializeModal();

@@ -1,0 +1,270 @@
+/* Account and Login Panel Styles */
+
+.account-panel {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    width: min(360px, 90vw);
+    background: rgba(6, 27, 58, 0.98);
+    border: 1px solid #10458f;
+    border-radius: 16px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.25s ease;
+    z-index: 999;
+    display: none;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.account-panel.active {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.account-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #10458f;
+}
+
+.account-panel-header h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #dce9f8;
+}
+
+.account-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #b8d1ef;
+    transition: color 0.2s;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.account-close:hover {
+    color: #7fa9df;
+}
+
+/* User Greeting */
+.user-greeting {
+    background: linear-gradient(135deg, #0b326d 0%, #10458f 100%);
+    color: #dce9f8;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+    border: 1px solid #7fa9df;
+}
+
+.user-greeting.hidden {
+    display: none;
+}
+
+.user-greeting h3 {
+    margin: 0 0 5px 0;
+    font-size: 1rem;
+    color: #dce9f8;
+}
+
+.user-greeting p {
+    margin: 0;
+    font-size: 0.85rem;
+    opacity: 0.85;
+}
+
+/* Account Actions */
+.account-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.account-actions.hidden {
+    display: none;
+}
+
+.account-actions .account-link {
+    display: block;
+    padding: 10px 15px;
+    background: rgba(127, 169, 223, 0.1);
+    border: 1px solid #10458f;
+    border-radius: 6px;
+    color: #7fa9df;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: left;
+    font-size: 0.95rem;
+}
+
+.account-actions .account-link:hover {
+    background: rgba(127, 169, 223, 0.2);
+    border-color: #7fa9df;
+    transform: translateX(5px);
+}
+
+/* Login and Signup Forms */
+#loginForm,
+#signupForm {
+    display: block;
+}
+
+#loginForm.hidden,
+#signupForm.hidden {
+    display: none;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #dce9f8;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #10458f;
+    background: rgba(8, 38, 83, 0.5);
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+    box-sizing: border-box;
+    color: #dce9f8;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #7fa9df;
+    background: rgba(8, 38, 83, 0.8);
+    box-shadow: 0 0 0 3px rgba(127, 169, 223, 0.1);
+}
+
+.form-group input::placeholder {
+    color: #7fa9df;
+    opacity: 0.6;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #0b326d 0%, #10458f 100%);
+    color: #dce9f8;
+    border: 1px solid #7fa9df;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 10px;
+}
+
+.submit-btn:hover {
+    border-color: #7fa9df;
+    box-shadow: 0 5px 15px rgba(127, 169, 223, 0.2);
+    transform: translateY(-2px);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+/* Form toggle links */
+.form-toggle {
+    text-align: center;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #10458f;
+    font-size: 0.9rem;
+    color: #b8d1ef;
+}
+
+.form-toggle a {
+    color: #7fa9df;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.form-toggle a:hover {
+    color: #dce9f8;
+}
+
+/* Logout Button */
+#logoutBtn {
+    width: 100%;
+    padding: 12px;
+    background: rgba(211, 47, 47, 0.1);
+    color: #ff6b6b;
+    border: 1px solid #ff6b6b;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+#logoutBtn:hover {
+    background: rgba(211, 47, 47, 0.2);
+    border-color: #ff6b6b;
+}
+
+#logoutBtn.hidden {
+    display: none;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .account-panel {
+        width: calc(100% - 20px);
+        right: 10px;
+        left: 10px;
+        max-height: 500px;
+    }
+
+    .account-panel-header h3 {
+        font-size: 1.1rem;
+    }
+
+    .form-group input {
+        font-size: 16px;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
