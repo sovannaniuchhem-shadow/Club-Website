@@ -119,6 +119,42 @@ export function initializeModal() {
         });
     }
 
+    const backBtn = document.querySelector('.modal-back-btn');
+    if (backBtn) {
+        backBtn.addEventListener('click', () => {
+            const productSpecs = document.getElementById('productSpecs');
+            const orderSummary = document.getElementById('orderSummary');
+            const productActions = document.getElementById('productActions');
+            const checkoutActions = document.getElementById('checkoutActions');
+            
+            if (productSpecs) productSpecs.style.display = 'flex';
+            if (orderSummary) orderSummary.style.display = 'none';
+            if (productActions) productActions.style.display = 'flex';
+            if (checkoutActions) checkoutActions.style.display = 'none';
+            
+            productModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+    }
+
+    const confirmBtn = document.querySelector('.modal-checkout-btn');
+    if (confirmBtn) {
+        confirmBtn.addEventListener('click', () => {
+            const cartApi = window.blueStepCart;
+            if (cartApi && typeof cartApi.clearCart === 'function') {
+                cartApi.clearCart();
+            }
+            productModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            
+            const successMsg = document.createElement('div');
+            successMsg.style.cssText = 'position: fixed; top: 20px; right: 20px; background: #10b981; color: white; padding: 16px 24px; border-radius: 8px; z-index: 9999; font-weight: 700;';
+            successMsg.textContent = '✓ Payment successful! Order confirmed.';
+            document.body.appendChild(successMsg);
+            setTimeout(() => successMsg.remove(), 3000);
+        });
+    }
+
     // Close modal
     function closeModal() {
         productModal.classList.remove('active');

@@ -138,31 +138,56 @@ function createCartSystem() {
         }
 
         const firstItem = items[0];
-        const totalCost = getCartTotal(cart);
-        const qrValue = `BLUESTEP|CHECKOUT|${items.map((item) => `${item.title} x${item.quantity}`).join(',')}|TOTAL=${totalCost.toFixed(2)}`;
+        const subtotal = getCartTotal(cart);
+        const tax = subtotal * 0.1;
+        const total = subtotal + tax;
+        const qrValue = `BLUESTEP|CHECKOUT|${items.map((item) => `${item.title}x${item.quantity}`).join('|')}|SUBTOTAL=${subtotal.toFixed(2)}|TAX=${tax.toFixed(2)}|TOTAL=${total.toFixed(2)}`;
+        
         const modalQrCode = document.getElementById('modalQrCode');
         const modalCategory = document.getElementById('modalCategory');
         const modalTitle = document.getElementById('modalTitle');
         const modalDescription = document.getElementById('modalDescription');
         const modalPrice = document.getElementById('modalPrice');
         const modalImage = document.getElementById('modalImage');
+        const productSpecs = document.getElementById('productSpecs');
+        const orderSummary = document.getElementById('orderSummary');
+        const productActions = document.getElementById('productActions');
+        const checkoutActions = document.getElementById('checkoutActions');
+        const orderItems = document.getElementById('orderItems');
 
-        if (modalCategory) modalCategory.textContent = 'CHECKOUT';
-        if (modalTitle) modalTitle.textContent = items.length > 1 ? `${items.length} items in cart` : firstItem.title;
+        if (modalCategory) modalCategory.textContent = 'SECURE CHECKOUT';
+        if (modalTitle) modalTitle.textContent = items.length > 1 ? `Order Summary (${items.length} items)` : firstItem.title;
         if (modalDescription) {
-            modalDescription.textContent = items.map((item) => `${item.title} x${item.quantity}`).join(', ');
+            modalDescription.textContent = items.length > 1 ? 'Review your order before payment' : items[0].title;
         }
-        if (modalPrice) modalPrice.textContent = `$${totalCost.toFixed(2)}`;
+        if (modalPrice) modalPrice.textContent = `$${total.toFixed(2)}`;
         if (modalImage) modalImage.src = firstItem.image || '../images/shoes1.png';
         if (modalQrCode) {
-            modalQrCode.src = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(qrValue)}`;
+            modalQrCode.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(qrValue)}`;
         }
 
+        if (productSpecs) productSpecs.style.display = 'none';
+        if (orderSummary) {
+            orderItems.innerHTML = items.map((item) => `
+                <div class="order-item">
+                    <span class="order-item-name">${item.title}</span>
+                    <span class="order-item-qty">x${item.quantity}</span>
+                    <span class="order-item-price">$${(Number(String(item.price).replace(/[^\d.]/g, '')) * item.quantity).toFixed(2)}</span>
+                </div>
+            `).join('');
+            document.getElementById('summarySubtotal').textContent = `$${subtotal.toFixed(2)}`;
+            document.getElementById('summaryTax').textContent = `$${tax.toFixed(2)}`;
+            document.getElementById('summaryTotal').textContent = `$${total.toFixed(2)}`;
+            orderSummary.style.display = 'block';
+        }
+        if (productActions) productActions.style.display = 'none';
+        if (checkoutActions) checkoutActions.style.display = 'flex';
+
         modal.dataset.productTitle = items.length > 1 ? `${items.length} items` : firstItem.title;
-        modal.dataset.productPrice = `$${totalCost.toFixed(2)}`;
+        modal.dataset.productPrice = `$${total.toFixed(2)}`;
         modal.dataset.productImage = firstItem.image || '../images/shoes1.png';
         modal.dataset.productCategory = 'CHECKOUT';
-        modal.dataset.mode = 'payment';
+        modal.dataset.mode = 'checkout';
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
         cartPanel.classList.remove('active');
@@ -201,7 +226,12 @@ function createCartSystem() {
         }
     });
 
-    window.blueStepCart = { addItem, changeQuantity, renderCart };
+    const clearCart = () => {
+        localStorage.removeItem('blueStepCart');
+        renderCart();
+    };
+
+    window.blueStepCart = { addItem, changeQuantity, renderCart, clearCart };
     renderCart();
 }
 

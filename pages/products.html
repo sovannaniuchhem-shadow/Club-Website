@@ -448,7 +448,8 @@
                         <p class="modal-category" id="modalCategory"></p>
                         <h2 id="modalTitle"></h2>
                         <p class="modal-description" id="modalDescription"></p>
-                        <div class="modal-specs">
+                        
+                        <div id="productSpecs" class="modal-specs">
                             <div class="spec">
                                 <span class="spec-label">Material</span>
                                 <span class="spec-value">Premium Synthetic</span>
@@ -463,21 +464,45 @@
                             </div>
                         </div>
 
+                        <div id="orderSummary" class="order-summary" style="display: none;">
+                            <h4>Order Summary</h4>
+                            <div id="orderItems"></div>
+                            <div class="summary-row subtotal">
+                                <span>Subtotal</span>
+                                <span id="summarySubtotal">$0.00</span>
+                            </div>
+                            <div class="summary-row tax">
+                                <span>Tax (10%)</span>
+                                <span id="summaryTax">$0.00</span>
+                            </div>
+                            <div class="summary-row total">
+                                <span>Total</span>
+                                <span id="summaryTotal">$0.00</span>
+                            </div>
+                        </div>
+
                         <div class="modal-qr-box">
                             <div class="qr-card">
-                                <img id="modalQrCode" src="" alt="QR code for product purchase">
+                                <img id="modalQrCode" src="" alt="QR code for secure payment">
                             </div>
-                            <p>Scan QR to buy now</p>
+                            <div class="qr-info">
+                                <p class="qr-title">Secure Payment</p>
+                                <p class="qr-instruction">Scan with your payment app to complete your purchase</p>
+                            </div>
                         </div>
 
                         <div class="modal-footer">
                             <div class="price-section">
-                                <span class="price-label">Price</span>
+                                <span class="price-label">Total Amount</span>
                                 <h3 id="modalPrice"></h3>
                             </div>
-                            <div class="modal-actions">
+                            <div id="productActions" class="modal-actions">
                                 <button class="modal-buy-btn" type="button">Add to Cart</button>
                                 <button class="modal-qr-btn" type="button">Pay with QR</button>
+                            </div>
+                            <div id="checkoutActions" class="modal-actions" style="display: none;">
+                                <button class="modal-checkout-btn" type="button">Confirm Payment</button>
+                                <button class="modal-back-btn" type="button">Back to Cart</button>
                             </div>
                         </div>
                     </div>
